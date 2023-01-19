@@ -1,0 +1,19 @@
+{
+  "name": "life-nation-chms-api",
+  "version": "1.0.0",
+  "description": "Life Nation chms core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boakaidorborkamara/life-nation-chms-api.git"
+  },
+  "author": "Boakai Dorbor Kamara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boakaidorborkamara/life-nation-chms-api/issues"
+  },
+  "homepage": "https://github.com/boakaidorborkamara/life-nation-chms-api#readme"
+}
