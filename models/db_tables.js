@@ -41,6 +41,10 @@ const People = sequelize.define("people", {
 
 
 
+
+
+
+
 // verify if database connection was successfully created 
 (async ()=>{
   try {
