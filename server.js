@@ -1,5 +1,5 @@
 const express = require("express");
-const sequelize = require("./db-config/db_config.js");
+const sequelize = require("./models/db_tables.js");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
