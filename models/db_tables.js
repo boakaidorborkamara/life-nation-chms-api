@@ -20,28 +20,91 @@ const sequelize = new Sequelize({
 
 //people model 
 const People = sequelize.define("people", {
-  gender: DataTypes.TEXT,
-  title: DataTypes.TEXT,
-  first_name: DataTypes.TEXT,
-  middle_name: DataTypes.TEXT,
-  last_name: DataTypes.TEXT,
-  suffix: DataTypes.TEXT,
-  date_of_birth: DataTypes.TEXT,
-  phone_number: DataTypes.TEXT,
-  whatsapp_number: DataTypes.TEXT,
-  email: DataTypes.TEXT,
-  profile_image: DataTypes.TEXT,
-  home_address: DataTypes.TEXT,
-  proffession: DataTypes.TEXT,
-  means_of_income: DataTypes.TEXT,
-  marital_status: DataTypes.TEXT,
-  number_of_children: DataTypes.INTEGER,
-  interested_department: DataTypes.TEXT,
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  gender: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  title:{
+    type: DataTypes.TEXT,
+    allowNull:true
+  },
+  first_name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  middle_name:{
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  last_name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  suffix: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  date_of_birth: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  phone_number: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  whatsapp_number: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  email: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  profile_image: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: 'https://ionicframework.com/docs/img/demos/avatar.svg'
+  },
+  home_address: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  proffession: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  means_of_income: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  marital_status: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  number_of_children: {
+    type: DataTypes.NUMBER,
+    defaultValue: 0,
+    allowNull: false
+  },
+  interested_department: {
+    type: DataTypes.TEXT,
+    defaultValue: 'None',
+    allowNull: false
+  },
+  educational_level: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   // foreign key >>>>>>>>>>>>>>>>>>>>>>>>>>>>
   family_role_id: DataTypes.TEXT,
   family_id: DataTypes.TEXT,
-  classification_id: DataTypes.TEXT,
-  educational_level_id: DataTypes.TEXT
+  classification_id: DataTypes.TEXT
 }); 
 
 
