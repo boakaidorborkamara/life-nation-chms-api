@@ -7,17 +7,32 @@ const sequelize = new Sequelize({
 });
 
 
+// define people model 
 const People = sequelize.define("people", {
-  name: DataTypes.TEXT,
-  favoriteColor: {
-    type: DataTypes.TEXT,
-    defaultValue: 'green'
-  },
-  age: DataTypes.INTEGER,
-  cash: DataTypes.INTEGER
+  gender: DataTypes.TEXT,
+  title: DataTypes.TEXT,
+  first_name: DataTypes.TEXT,
+  middle_name: DataTypes.TEXT,
+  last_name: DataTypes.TEXT,
+  suffix: DataTypes.TEXT,
+  date_of_birth: DataTypes.TEXT,
+  phone_number: DataTypes.TEXT,
+  whatsapp_number: DataTypes.TEXT,
+  email: DataTypes.TEXT,
+  profile_image: DataTypes.TEXT,
+  home_address: DataTypes.TEXT,
+  proffession: DataTypes.TEXT,
+  means_of_income: DataTypes.TEXT,
+  marital_status: DataTypes.TEXT,
+  number_of_children: DataTypes.INTEGER,
+  interested_department: DataTypes.TEXT,
+  // foreign key >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  family_role_id: DataTypes.TEXT,
+  family_id: DataTypes.TEXT,
+  classification_id: DataTypes.TEXT,
+  educational_level_id: DataTypes.TEXT
 });
-
-// create actual table in the database 
+ 
 (async () => {
   await sequelize.sync({ force: true });
   // Code here
