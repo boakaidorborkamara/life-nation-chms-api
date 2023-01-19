@@ -7,6 +7,17 @@ const sequelize = new Sequelize({
 });
 
 
+// verify if database connection was successfully created 
+(async ()=>{
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+})();
+
+
 // define people model 
 const People = sequelize.define("people", {
   gender: DataTypes.TEXT,
@@ -33,27 +44,28 @@ const People = sequelize.define("people", {
   educational_level_id: DataTypes.TEXT
 });
  
+
+
+// define family role model 
+const FamilyRole = sequelize.define("family_roles", {
+  name: DataTypes.TEXT
+});
+
+
+
+
+// sync all of the models with the database 
 (async () => {
   await sequelize.sync({ force: true });
   // Code here
-  console.log("People table successfully created.")
+  console.log("People table successfully created.");
+  console.log("Family Roles table successfully created");
 })();
 
 
 
 
 
-
-
-// verify if database connection was successfully created 
-(async ()=>{
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})();
 
 
 // close database connection 
