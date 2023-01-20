@@ -110,34 +110,94 @@ const People = sequelize.define("people", {
 
 // family roles model 
 const FamilyRole = sequelize.define("family_roles", {
-  name: DataTypes.TEXT
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
 });
 
 
 // families model 
 const Family = sequelize.define("families", {
-  name: DataTypes.TEXT,
-  address1: DataTypes.TEXT,
-  address2: DataTypes.TEXT,
-  home_phone: DataTypes.TEXT,
-  mobile_phone: DataTypes.TEXT,
-  whatsapp_number: DataTypes.TEXT,
-  email: DataTypes.TEXT,
-  wedding_date: DataTypes.DATE
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  address1: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  address2: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  home_phone: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  mobile_phone: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  wedding_date: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  }
 });
 
 
 // group-types model 
 const GroupType = sequelize.define("group_types", {
-  name: DataTypes.TEXT
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
 });
 
 
 // groups model 
 const Group = sequelize.define("groups", {
-  name: DataTypes.TEXT,
-  description: DataTypes.TEXT,
-  status: DataTypes.BOOLEAN,
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  status: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: 'active'
+  },
   // foreign key 
   group_type_id: DataTypes.TEXT
 });
@@ -145,8 +205,19 @@ const Group = sequelize.define("groups", {
 
 // group roles model 
 const GroupRole = sequelize.define("group_roles", {
-  name: DataTypes.TEXT,
-  default_status: DataTypes.BOOLEAN,
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  title: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  select_as_default: {
+    type: DataTypes.BOOLEAN
+  },
   // foreign key 
   group_id: DataTypes.TEXT
 });
@@ -194,12 +265,6 @@ const EventAttendance = sequelize.define("event_attendance", {
   console.log("Event Types table successfully created");
   console.log("Event table successfully created");
   console.log("Event Attendance Types table successfully created");
-
-
-
-
-
-
 })();
 
 
