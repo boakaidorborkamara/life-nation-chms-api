@@ -1,4 +1,4 @@
-# LIFE NATION CHURCH MANAGEMENT SYSTEM API DOCUMENTATION
+# Life Nation Church Management System API Documentation
 V1.0 | By: Boakai Dorbor Kamara
 
 ### Description
