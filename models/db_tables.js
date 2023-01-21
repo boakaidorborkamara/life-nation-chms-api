@@ -101,26 +101,8 @@ const People = sequelize.define("people", {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  // foreign key >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  family_role_id: DataTypes.TEXT,
-  family_id: DataTypes.TEXT,
-  classification_id: DataTypes.TEXT
 }); 
 
-
-// family roles model 
-const FamilyRole = sequelize.define("family_roles", {
-  id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    primaryKey: true,
-    allowNull: false
-  },
-  name: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  }
-});
 
 
 // families model 
@@ -162,8 +144,9 @@ const Family = sequelize.define("families", {
 });
 
 
-// group-types model 
-const GroupType = sequelize.define("group_types", {
+
+// family roles model 
+const FamilyRole = sequelize.define("family_roles", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
@@ -175,6 +158,24 @@ const GroupType = sequelize.define("group_types", {
     allowNull: false
   }
 });
+
+
+
+// membership category model 
+const MembershipCategory = sequelize.define("membership_categories", {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4, 
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
+});
+
+
 
 
 // groups model 
@@ -201,6 +202,23 @@ const Group = sequelize.define("groups", {
   // foreign key 
   group_type_id: DataTypes.TEXT
 });
+
+
+
+// group-types model 
+const GroupType = sequelize.define("group_types", {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
+});
+
 
 
 // group roles model 
@@ -252,6 +270,21 @@ const EventAttendance = sequelize.define("event_attendance", {
 });
 
 
+// Associations 
+FamilyRole.hasOne(People); //create familyRoleId foreign key in People table with one to one relationship
+People.belongsTo(FamilyRole); 
+
+Family.hasOne(People); //create FamilyId foreign key in People table with one to one relationship
+People.belongsTo(Family);
+
+MembershipCategory.hasOne(People); //create MembershipCategoryId foreigh key in People table with on to one relationsip
+People.belongsTo(MembershipCategory);
+
+GroupType.hasOne(Group); //create GroupTypeId foreign in Group table with one to one relationship
+Group.belongsTo(GroupType);
+
+
+
 // sync all of the models with the database 
 (async () => {
   await sequelize.sync({ force: true });
@@ -275,3 +308,4 @@ const EventAttendance = sequelize.define("event_attendance", {
 
 // close database connection 
 // sequelize.close()
+
