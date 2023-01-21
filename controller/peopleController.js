@@ -17,7 +17,7 @@ const person_details = (req, res)=>{
 
 
 // Handle edit of specific person details on PUT 
-const person_details_edit = (req, res)=>{
+const person_edit = (req, res)=>{
     res.send("Edit person Details")
 }
 
@@ -27,3 +27,11 @@ const person_delete = (req, res)=>{
     res.send("delete person");
 }
 
+
+module.exports = {
+    person_create,
+    people_list,
+    person_details,
+    person_edit,
+    person_delete
+}
