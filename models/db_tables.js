@@ -104,7 +104,6 @@ const People = sequelize.define("people", {
 }); 
 
 
-
 // families model 
 const Family = sequelize.define("families", {
   id: {
@@ -144,7 +143,6 @@ const Family = sequelize.define("families", {
 });
 
 
-
 // family roles model 
 const FamilyRole = sequelize.define("family_roles", {
   id: {
@@ -160,7 +158,6 @@ const FamilyRole = sequelize.define("family_roles", {
 });
 
 
-
 // membership category model 
 const MembershipCategory = sequelize.define("membership_categories", {
   id: {
@@ -174,8 +171,6 @@ const MembershipCategory = sequelize.define("membership_categories", {
     allowNull: false
   }
 });
-
-
 
 
 // groups model 
@@ -204,7 +199,6 @@ const Group = sequelize.define("groups", {
 });
 
 
-
 // group-types model 
 const GroupType = sequelize.define("group_types", {
   id: {
@@ -218,7 +212,6 @@ const GroupType = sequelize.define("group_types", {
     allowNull: false
   }
 });
-
 
 
 // group roles model 
@@ -237,11 +230,11 @@ const GroupRole = sequelize.define("group_roles", {
     type: DataTypes.BOOLEAN
   },
   // foreign key 
-  group_id: DataTypes.TEXT
+  // group_id: DataTypes.TEXT
 });
 
 
-// group event types model 
+// event types model 
 const EventType = sequelize.define("event_types", {
   name: DataTypes.TEXT,
   recurrence_pattern: DataTypes.TEXT,
@@ -283,6 +276,8 @@ People.belongsTo(MembershipCategory);
 GroupType.hasOne(Group); //create GroupTypeId foreign in Group table with one to one relationship
 Group.belongsTo(GroupType);
 
+Group.hasMany(GroupRole); //create a one to many relationship between Group and GroupRole with foreign key stored in Group Role
+GroupRole.belongsTo(Group);
 
 
 // sync all of the models with the database 
