@@ -298,7 +298,9 @@ GroupRole.belongsTo(Group);
 
 
 
-
+module.exports = {
+  People
+}
 
 
 // close database connection 

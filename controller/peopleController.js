@@ -1,5 +1,30 @@
+const db_table = require('../models/db_tables');
+
+
 // Handle creation of person on POST
 const person_create = (req, res)=>{
+
+    const person = db_table.People.create({
+        gender: "male",
+        title: "Mr",
+        first_name: "Boakai",
+        middle_name: "Dorbor",
+        last_name: "Kamara",
+        suffix: "Jr.",
+        date_of_birth: "January 15, 2022",
+        phone_number: "0774333",
+        whatsapp_number:"8844737",
+        email: "boakaidkamara@gmail.com",
+        profile_image: "",
+        home_address: "GSA Road",
+        proffession: "Software Engineeer",
+        means_of_income: "Self Employed",
+        marital_status: "Single",
+        number_of_children: 0,
+        intrested_department: "Life Plug",
+        educational_level: "High School Graduate"
+    });
+
     res.send('creating new person');
 }
 
