@@ -32,15 +32,27 @@ const person_create = async (req, res)=>{
 const people_list = async (req,res)=>{
 
     const people = await db.People.findAll();
-    // people = JSON.stringify(people)
     res.status(200).send({code: 0, people:people});
-    // res.send("Sending people list");
+
 }
 
 
 //Handle display of specific person on GET
-const person_details = (req, res)=>{
-    res.send("Details for specific person")
+const person_details = async (req, res)=>{
+    
+    let person_id = req.params.id;
+
+    console.log("person id", person_id);
+
+    const person = await db.people.findAll({
+        where:{
+            id: {
+                [Op.eq]: person_id
+            }
+        }
+    });
+
+    // res.send(JSON.stringify(person));
 }
 
 
