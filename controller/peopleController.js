@@ -1,10 +1,10 @@
-const db_table = require('../models/db_tables');
+const db = require('../models/db_tables');
 
 
 // Handle creation of person on POST
 const person_create = async (req, res)=>{
 
-    const person = await db_table.People.create({
+    const person = await db.People.create({
         gender: "male",
         title: "Mr",
         first_name: "James",
@@ -29,8 +29,12 @@ const person_create = async (req, res)=>{
 
 
 // Handle diplay of people on GET
-const people_list = (req,res)=>{
-    res.send("Sending people list");
+const people_list = async (req,res)=>{
+
+    const people = await db.People.findAll();
+    // people = JSON.stringify(people)
+    res.status(200).send({code: 0, people:people});
+    // res.send("Sending people list");
 }
 
 

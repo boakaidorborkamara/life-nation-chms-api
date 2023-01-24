@@ -282,7 +282,7 @@ GroupRole.belongsTo(Group);
 
 // sync all of the models with the database 
 (async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
   // Code here
   console.log("People table successfully created.");
   console.log("Family Roles table successfully created");
