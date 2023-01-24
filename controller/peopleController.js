@@ -46,7 +46,7 @@ const person_details = async (req, res)=>{
     // id of person's detail you want to see 
     let person_id = req.params.id;
 
-    // check id is valid 
+    // check if id is valid 
     const person = await db.People.findByPk(person_id);
     if (person === null) {
 
@@ -62,7 +62,7 @@ const person_details = async (req, res)=>{
         res_obj.code = 200;
         res_obj.message = person;
 
-        res.send(JSON.stringify(res_obj));
+        res.status(200).send(JSON.stringify(res_obj));
     }
 
     
@@ -70,8 +70,25 @@ const person_details = async (req, res)=>{
 
 
 // Handle edit of specific person details on PUT 
-const person_edit = (req, res)=>{
-    res.send("Edit person Details")
+const person_edit = async (req, res)=>{
+
+    // id for person info we want to edit 
+    let person_id = req.params.id;
+
+
+    await db.People.update({first_name: "Boakai"},{
+        where:{
+            id:person_id
+        }
+    });
+
+
+    // modify request obj 
+    res_obj.code = 200;
+    res_obj.message = "User modified"
+
+    res.status(200).send(JSON.stringify(res_obj));
+
 }
 
 
