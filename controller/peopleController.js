@@ -27,7 +27,28 @@ const person_create = async (req, res)=>{
         educational_level: "High School Graduate"
     });
 
-    res.status(201).send({code: 201, message: "person created"})
+    const person2 = await db.People.create({
+        gender: "male",
+        title: "Mr",
+        first_name: "Munyan",
+        middle_name: "Dorbor",
+        last_name: "Kamara",
+        suffix: "Jr.",
+        date_of_birth: "January 15, 2022",
+        phone_number: "0774333",
+        whatsapp_number:"8844737",
+        email: "boakaidkamara@gmail.com",
+        home_address: "GSA Road",
+        proffession: "Software Engineeer",
+        means_of_income: "Self Employed",
+        marital_status: "Single",
+        number_of_children: 0,
+        intrested_department: "Life Plug",
+        educational_level: "High School Graduate"
+    });
+
+
+    res.status(201).send({code: 201, message: "person created"});
 }
 
 
@@ -93,8 +114,23 @@ const person_edit = async (req, res)=>{
 
 
 //Handle delete of specific person details on DELETE
-const person_delete = (req, res)=>{
-    res.send("delete person");
+const person_delete = async (req, res)=>{
+
+    // id for person info we want to edit 
+    let person_id = req.params.id;
+
+    await db.People.destroy({
+        where: {
+            id: person_id
+        }
+    });
+
+    // modify res_obj 
+    res_obj.code = 204;
+    res_obj.message = "deleted";
+
+    res.send(JSON.stringify(res_obj));
+
 }
 
 
