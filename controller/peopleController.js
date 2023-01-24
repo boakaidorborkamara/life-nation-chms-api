@@ -2,20 +2,19 @@ const db_table = require('../models/db_tables');
 
 
 // Handle creation of person on POST
-const person_create = (req, res)=>{
+const person_create = async (req, res)=>{
 
-    const person = db_table.People.create({
+    const person = await db_table.People.create({
         gender: "male",
         title: "Mr",
-        first_name: "Boakai",
+        first_name: "James",
         middle_name: "Dorbor",
-        last_name: "Kamara",
+        last_name: "Gaye",
         suffix: "Jr.",
         date_of_birth: "January 15, 2022",
         phone_number: "0774333",
         whatsapp_number:"8844737",
         email: "boakaidkamara@gmail.com",
-        profile_image: "",
         home_address: "GSA Road",
         proffession: "Software Engineeer",
         means_of_income: "Self Employed",
@@ -25,7 +24,7 @@ const person_create = (req, res)=>{
         educational_level: "High School Graduate"
     });
 
-    res.send('creating new person');
+    res.status(201).send({code: 0, message: "person created"})
 }
 
 
