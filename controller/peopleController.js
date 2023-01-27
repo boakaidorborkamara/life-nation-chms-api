@@ -7,6 +7,9 @@ let res_obj = {code: 0, message: "Ok"};
 // Handle creation of person on POST
 const person_create = async (req, res)=>{
 
+    let new_person_details = req;
+    // console.log(new_person_details);
+
     const person = await db.People.create({
         gender: "male",
         title: "Mr",
