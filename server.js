@@ -16,10 +16,12 @@ const PORT = process.env.PORT || 3000;
 // ROUTES 
 const index_routes = require('./routers/index-router');
 const people_routes = require('./routers/people-router');
+const family_routes = require('./routers/family-router');
 
 
 app.use(index_routes);
 app.use(people_routes);
+app.use(family_routes);
 
 
 

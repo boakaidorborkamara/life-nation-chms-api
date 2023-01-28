@@ -32,7 +32,7 @@ const person_create = async (req, res)=>{
     });
 
 
-    res.status(201).send({code: 201, message: "person created"});
+    res.status(201).send({code: 201, message: "Person Added"});
 }
 
 
