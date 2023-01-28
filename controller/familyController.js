@@ -33,14 +33,36 @@ const families_list = async (req,res)=>{
 }
 
 
-//Handle display of specific person on GET
-// const family_details = (req, res)=>{
-//     res.send("Sending Details for specific family")
-// }
+//Handle display of specific family on GET
+const family_details = async (req, res)=>{
+
+    // id of family detail you want to see 
+    let family_id = req.params.id;
+
+    
+    const family = await db.Family.findByPk(family_id);
+    // check if id is invalid 
+    if (family === null) {
+
+        // modify res obj 
+        res_obj.code = 400;
+        res_obj.message = "Not a valid family";
+
+        res.status(400).send(res_obj);
+
+    } else {
+        
+        // modify res obj 
+        res_obj.code = 200;
+        res_obj.message = family;
+
+        res.status(200).send(JSON.stringify(res_obj));
+    }
+}
 
 
 // Handle edit of specific person details on PUT 
-// const person_edit = (req, res)=>{
+// const family_edit = (req, res)=>{
 //     res.send("Edit person Details")
 // }
 
@@ -54,7 +76,7 @@ const families_list = async (req,res)=>{
 module.exports = {
     family_create,
     families_list,
-    // person_details,
+    family_details
     // person_edit,
     // person_delete
 }

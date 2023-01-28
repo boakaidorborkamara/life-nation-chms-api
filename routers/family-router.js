@@ -7,12 +7,12 @@ const familyController = require('../controller/familyController');
 router.post('/v1/families', familyController.family_create);
 
  
-//list all people
+//list all families
 router.get('/v1/families', familyController.families_list);
 
 
-//get person detail
-// router.get('/v1/person/:id', peopleController.person_details);
+//get family detail
+router.get('/v1/families/:id', familyController.family_details);
 
 
 //edit person details
