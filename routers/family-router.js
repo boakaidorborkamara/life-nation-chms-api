@@ -15,8 +15,8 @@ router.get('/v1/families', familyController.families_list);
 router.get('/v1/families/:id', familyController.family_details);
 
 
-//edit person details
-// router.put('/v1/person/:id', peopleController.person_edit);
+//edit family details
+router.put('/v1/families/:id', familyController.family_edit);
 
 
 //delete person

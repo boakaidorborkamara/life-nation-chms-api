@@ -62,9 +62,29 @@ const family_details = async (req, res)=>{
 
 
 // Handle edit of specific person details on PUT 
-// const family_edit = (req, res)=>{
-//     res.send("Edit person Details")
-// }
+const family_edit = async (req, res)=>{
+
+    // id for person info we want to edit 
+    let family_id = req.params.id;
+
+    //new info for modification
+    let new_info = req.body;
+    console.log(new_info);
+
+
+    await db.Family.update(new_info,{
+        where:{
+            id:family_id
+        }
+    });
+
+
+    // modify request obj 
+    res_obj.code = 200;
+    res_obj.message = "Family modified"
+
+    res.status(200).send(JSON.stringify(res_obj));
+}
 
 
 //Handle delete of specific person details on DELETE
@@ -76,7 +96,7 @@ const family_details = async (req, res)=>{
 module.exports = {
     family_create,
     families_list,
-    family_details
-    // person_edit,
+    family_details,
+    family_edit,
     // person_delete
 }
