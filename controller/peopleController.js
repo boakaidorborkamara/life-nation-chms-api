@@ -7,6 +7,7 @@ let res_obj = {code: 0, message: "Ok"};
 // Handle creation of person on POST
 const person_create = async (req, res)=>{
 
+    // data from frontend
     let new_person_details = req.body;
     console.log(new_person_details);
 
@@ -50,8 +51,9 @@ const person_details = async (req, res)=>{
     // id of person's detail you want to see 
     let person_id = req.params.id;
 
-    // check if id is valid 
+    
     const person = await db.People.findByPk(person_id);
+    // check if id is invalid 
     if (person === null) {
 
         // modify res obj 
@@ -79,8 +81,12 @@ const person_edit = async (req, res)=>{
     // id for person info we want to edit 
     let person_id = req.params.id;
 
+    //new info for modification
+    let new_info = req.body;
+    console.log(new_info);
 
-    await db.People.update({first_name: "Boakai"},{
+
+    await db.People.update(new_info,{
         where:{
             id:person_id
         }
