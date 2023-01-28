@@ -5,97 +5,51 @@ let res_obj = {code: 0, message: "Ok"};
 
 
 // Handle creation of person on POST
-const person_create = async (req, res)=>{
+const person_category_create = async (req, res)=>{
 
     // data from frontend
-    let new_person_details = req.body;
-    console.log(new_person_details);
+    let new_category = req.body;
+    console.log(new_category);
 
-    const person = await db.People.create({
-        gender: new_person_details.gender,
-        title: new_person_details.title,
-        first_name: new_person_details.first_name,
-        middle_name: new_person_details.middle_name,
-        last_name: new_person_details.last_name,
-        suffix: new_person_details.suffix,
-        date_of_birth: new_person_details.date_of_birth,
-        phone_number: new_person_details.phone_number,
-        whatsapp_number:new_person_details.whatsapp_number,
-        email: new_person_details.email,
-        home_address: new_person_details.home_address,
-        proffession: new_person_details.proffession,
-        means_of_income: new_person_details.means_of_income,
-        marital_status: new_person_details.marital_status,
-        number_of_children: new_person_details.number_of_children,
-        intrested_department: new_person_details.intrested_department,
-        educational_level: new_person_details.educational_level
+    const person_category = await db.PersonCategory.create({
+        name: new_category.name
     });
 
 
-    res.status(201).send({code: 201, message: "Person Added"});
+    res.status(201).send({code: 201, message: "Category Added"});
 }
 
 
 // Handle diplay of people on GET
-const people_list = async (req,res)=>{
+const person_category_list = async (req,res)=>{
 
-    const people = await db.People.findAll();
-    res.status(200).send({code: 200, people:people});
+    const person_category = await db.PersonCategory.findAll();
+    res.status(200).send({code: 200, person_category});
 
-}
-
-
-//Handle display of specific person on GET
-const person_details = async (req, res)=>{
-    
-    // id of person's detail you want to see 
-    let person_id = req.params.id;
-
-    
-    const person = await db.People.findByPk(person_id);
-    // check if id is invalid 
-    if (person === null) {
-
-        // modify res obj 
-        res_obj.code = 400;
-        res_obj.message = "Not a valid person";
-
-        res.status(400).send(res_obj);
-
-    } else {
-        
-        // modify res obj 
-        res_obj.code = 200;
-        res_obj.message = person;
-
-        res.status(200).send(JSON.stringify(res_obj));
-    }
-
-    
 }
 
 
 // Handle edit of specific person details on PUT 
-const person_edit = async (req, res)=>{
+const person_category_edit = async (req, res)=>{
 
     // id for person info we want to edit 
-    let person_id = req.params.id;
+    let person_category_id = req.params.id;
 
     //new info for modification
     let new_info = req.body;
     console.log(new_info);
 
 
-    await db.People.update(new_info,{
+    await db.PersonCategory.update(new_info,{
         where:{
-            id:person_id
+            id:person_category_id
         }
     });
 
 
     // modify request obj 
     res_obj.code = 200;
-    res_obj.message = "User modified"
+    res_obj.message = "Category modified"
 
     res.status(200).send(JSON.stringify(res_obj));
 
