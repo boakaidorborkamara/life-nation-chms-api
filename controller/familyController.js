@@ -87,10 +87,24 @@ const family_edit = async (req, res)=>{
 }
 
 
-//Handle delete of specific person details on DELETE
-// const person_delete = (req, res)=>{
-//     res.send("delete person");
-// }
+//Handle delete of specific family details on DELETE
+const family_delete = async (req, res)=>{
+    
+    // id for person info we want to edit 
+    let family_id = req.params.id;
+
+    await db.Family.destroy({
+        where: {
+            id: family_id
+        }
+    });
+
+    // modify res_obj 
+    res_obj.code = 204;
+    res_obj.message = "Success, family deleted.";
+
+    res.send(JSON.stringify(res_obj));
+}
 
 
 module.exports = {
@@ -98,5 +112,5 @@ module.exports = {
     families_list,
     family_details,
     family_edit,
-    // person_delete
+    family_delete
 }
