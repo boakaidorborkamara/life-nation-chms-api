@@ -158,8 +158,8 @@ const FamilyRole = sequelize.define("family_roles", {
 });
 
 
-// membership category model 
-const MembershipCategory = sequelize.define("membership_categories", {
+// person category model 
+const PersonCategory = sequelize.define("person_categories", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4, 
@@ -270,8 +270,8 @@ People.belongsTo(FamilyRole);
 Family.hasOne(People); //create FamilyId foreign key in People table with one to one relationship
 People.belongsTo(Family);
 
-MembershipCategory.hasOne(People); //create MembershipCategoryId foreigh key in People table with on to one relationsip
-People.belongsTo(MembershipCategory);
+PersonCategory.hasOne(People); //create PersonCategoryId foreigh key in People table with on to one relationsip
+People.belongsTo(PersonCategory);
 
 GroupType.hasOne(Group); //create GroupTypeId foreign in Group table with one to one relationship
 Group.belongsTo(GroupType);
