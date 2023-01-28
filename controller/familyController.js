@@ -12,13 +12,13 @@ const family_create = async (req, res)=>{
     console.log(new_family_details);
 
     const family = await db.Family.create({
-        name: "Kamara",
-        address1: "Kebbah",
-        address2: "",
-        home_phone: "",
-        mobile_phone: "",
-        email: "",
-        wedding_date: ""
+        name: new_family_details.name,
+        address1: new_family_details.address1,
+        address2: new_family_details.address2,
+        home_phone: new_family_details.home_phone,
+        mobile_phone: new_family_details.mobile_phone,
+        email: new_family_details.email,
+        wedding_date: new_family_details.wedding_date
     });
 
     res.status(201).send({code: 201, message: "Family Added"});
