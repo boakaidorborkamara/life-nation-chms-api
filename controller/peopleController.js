@@ -10,25 +10,25 @@ const person_create = async (req, res)=>{
     let new_person_details = req.body;
     console.log(new_person_details);
 
-    // const person = await db.People.create({
-    //     gender: "male",
-    //     title: "Mr",
-    //     first_name: "James",
-    //     middle_name: "Dorbor",
-    //     last_name: "Gaye",
-    //     suffix: "Jr.",
-    //     date_of_birth: "January 15, 2022",
-    //     phone_number: "0774333",
-    //     whatsapp_number:"8844737",
-    //     email: "boakaidkamara@gmail.com",
-    //     home_address: "GSA Road",
-    //     proffession: "Software Engineeer",
-    //     means_of_income: "Self Employed",
-    //     marital_status: "Single",
-    //     number_of_children: 0,
-    //     intrested_department: "Life Plug",
-    //     educational_level: "High School Graduate"
-    // });
+    const person = await db.People.create({
+        gender: new_person_details.gender,
+        title: new_person_details.title,
+        first_name: new_person_details.first_name,
+        middle_name: new_person_details.middle_name,
+        last_name: new_person_details.last_name,
+        suffix: new_person_details.suffix,
+        date_of_birth: new_person_details.date_of_birth,
+        phone_number: new_person_details.phone_number,
+        whatsapp_number:new_person_details.whatsapp_number,
+        email: new_person_details.email,
+        home_address: new_person_details.home_address,
+        proffession: new_person_details.proffession,
+        means_of_income: new_person_details.means_of_income,
+        marital_status: new_person_details.marital_status,
+        number_of_children: new_person_details.number_of_children,
+        intrested_department: new_person_details.intrested_department,
+        educational_level: new_person_details.educational_level
+    });
 
 
     res.status(201).send({code: 201, message: "person created"});
