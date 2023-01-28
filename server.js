@@ -1,16 +1,12 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const sequelize = require("./models/db_tables.js");
 
 
 const app = express();
 
 
-// create application/json parser
-const  jsonParser = bodyParser.json();
-
-// create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 
 // define port 
