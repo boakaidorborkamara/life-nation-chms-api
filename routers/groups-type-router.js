@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const groupsController = require('../controller/groupsController');
+const groupsTypesController = require('../controller/groupTypesController');
 
 
-//create new group
-router.post('/v1/groups', groupsController.groups_create);
+//create new group type
+router.post('/v1/groups-types', groupsTypesController.group_type_create);
 
  
-//list all group
-router.get('/v1/groups', groupsController.groups_list);
+//list all group type
+router.get('/v1/groups-types', groupsTypesController.group_types_list);
 
 
-//get groups detail
-router.get('/v1/groups/:id', groupsController.groups_details);
+//get group types detail
 
 
-//edit group details
-router.put('/v1/groups/:id', groupsController.groups_edit);
+
+//edit group 
+router.put('/v1/group-types/:id', groupsTypesController.group_type_edit);
 
 
-//delete groups
-router.delete('/v1/groups/:id', groupsController.groups_delete);
+//delete group types
+router.delete('/v1/group-types/:id', groupsTypesController.group_type_delete);
 
 
 
