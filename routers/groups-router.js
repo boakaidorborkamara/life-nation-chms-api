@@ -12,7 +12,7 @@ router.get('/v1/groups', groupsController.groups_list);
 
 
 //get groups detail
-router.get('/v1/groups/:id', groupsController.groups_edit);
+router.get('/v1/groups/:id', groupsController.groups_details);
 
 
 //edit group details

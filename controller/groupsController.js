@@ -70,7 +70,7 @@ const groups_edit = async (req, res)=>{
 
     await db.Group.update(new_info,{
         where:{
-            id:family_id
+            id:group_id
         }
     });
 
