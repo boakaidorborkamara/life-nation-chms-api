@@ -57,14 +57,14 @@ const person_category_edit = async (req, res)=>{
 
 
 //Handle delete of specific person details on DELETE
-const person_delete = async (req, res)=>{
+const person_category_delete = async (req, res)=>{
 
     // id for person info we want to edit 
-    let person_id = req.params.id;
+    let person_category_id = req.params.id;
 
-    await db.People.destroy({
+    await db.PersonCategory.destroy({
         where: {
-            id: person_id
+            id: person_category_id
         }
     });
 
@@ -78,9 +78,8 @@ const person_delete = async (req, res)=>{
 
 
 module.exports = {
-    person_create,
-    people_list,
-    person_details,
-    person_edit,
-    person_delete
+    person_category_create,
+    person_category_list,
+    person_category_edit,
+    person_category_delete
 }
