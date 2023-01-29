@@ -8,17 +8,11 @@ let res_obj = {code: 0, message: "Ok"};
 const group_type_create = async (req, res)=>{
 
     // data from frontend
-    let new_family_details = req.body;
-    console.log(new_family_details);
+    let new_group_type_details = req.body;
+    console.log(new_group_type_details);
 
-    const family = await db.Family.create({
-        name: new_family_details.name,
-        address1: new_family_details.address1,
-        address2: new_family_details.address2,
-        home_phone: new_family_details.home_phone,
-        mobile_phone: new_family_details.mobile_phone,
-        email: new_family_details.email,
-        wedding_date: new_family_details.wedding_date
+    const group_type = await db.Family.create({
+        name: new_group_type_details.name
     });
 
     res.status(201).send({code: 201, message: "Family Added"});

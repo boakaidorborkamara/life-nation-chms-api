@@ -300,7 +300,8 @@ module.exports = {
   People,
   Family,
   PersonCategory,
-  Group
+  Group,
+  GroupType
 }
 
 
