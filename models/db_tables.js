@@ -193,9 +193,7 @@ const Group = sequelize.define("groups", {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: 'active'
-  },
-  // foreign key 
-  group_type_id: DataTypes.TEXT
+  }
 });
 
 
