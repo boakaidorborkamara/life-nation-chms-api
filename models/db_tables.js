@@ -220,12 +220,15 @@ const GroupRole = sequelize.define("group_roles", {
     primaryKey: true,
     allowNull: false
   },
-  title: {
+  title: { 
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
+    defaultValue: "Member" 
   },
-  select_as_default: {
-    type: DataTypes.BOOLEAN
+  default: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: "true" 
   },
   // foreign key 
   // group_id: DataTypes.TEXT
