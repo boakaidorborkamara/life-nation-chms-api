@@ -4,11 +4,11 @@ const groupsTypesController = require('../controller/groupTypesController');
 
 
 //create new group type
-router.post('/v1/groups-types', groupsTypesController.group_type_create);
+router.post('/v1/group-types', groupsTypesController.group_type_create);
 
  
 //list all group type
-router.get('/v1/groups-types', groupsTypesController.group_types_list);
+router.get('/v1/group-types', groupsTypesController.group_types_list);
 
 
 //get group types detail

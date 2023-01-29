@@ -15,7 +15,7 @@ const group_type_create = async (req, res)=>{
         name: new_group_type_details.name
     });
 
-    res.status(201).send({code: 201, message: "Group Added"});
+    res.status(201).send({code: 201, message: "Group Type Added"});
 
 }
 

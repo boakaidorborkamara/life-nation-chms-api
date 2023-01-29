@@ -19,6 +19,7 @@ const people_routes = require('./routers/people-router');
 const family_routes = require('./routers/family-router');
 const person_categories_routes = require('./routers/person-categories-router');
 const groups_routes = require('./routers/groups-router');
+const groups_types_routes = require('./routers/groups-type-router');
 
 
 app.use(index_routes);
@@ -26,6 +27,7 @@ app.use(people_routes);
 app.use(family_routes);
 app.use(person_categories_routes);
 app.use(groups_routes);
+app.use(groups_types_routes);
 
 
 
