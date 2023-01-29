@@ -299,7 +299,8 @@ GroupRole.belongsTo(Group);
 module.exports = {
   People,
   Family,
-  PersonCategory
+  PersonCategory,
+  Group
 }
 
 

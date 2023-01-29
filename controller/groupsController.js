@@ -4,49 +4,45 @@ const db = require('../models/db_tables');
 let res_obj = {code: 0, message: "Ok"};
 
 
-// Handle creation of family on POST
-const family_create = async (req, res)=>{
+// Handle creation of groups on POST
+const groups_create = async (req, res)=>{
 
     // data from frontend
-    let new_family_details = req.body;
-    console.log(new_family_details);
+    let new_group_details = req.body;
+    console.log(new_group_details);
 
-    const family = await db.Family.create({
-        name: new_family_details.name,
-        address1: new_family_details.address1,
-        address2: new_family_details.address2,
-        home_phone: new_family_details.home_phone,
-        mobile_phone: new_family_details.mobile_phone,
-        email: new_family_details.email,
-        wedding_date: new_family_details.wedding_date
+    const group = await db.Group.create({
+        name: new_group_details.name,
+        description: new_group_details.description,
+        status: new_group_details.status
     });
 
-    res.status(201).send({code: 201, message: "Family Added"});
+    res.status(201).send({code: 201, message: "Group Added"});
 
 }
 
 
-// Handle diplay of families on GET
-const families_list = async (req,res)=>{
-    const families = await db.Family.findAll();
-    res.status(200).send({code: 200, families});
+// Handle diplay of groups on GET
+const groups_list = async (req,res)=>{
+    const groups = await db.Group.findAll();
+    res.status(200).send({code: 200, groups});
 }
 
 
-//Handle display of specific family on GET
-const family_details = async (req, res)=>{
+//Handle display of specific group on GET
+const groups_details = async (req, res)=>{
 
-    // id of family detail you want to see 
-    let family_id = req.params.id;
+    // id of group detail you want to see 
+    let group_id = req.params.id;
 
     
-    const family = await db.Family.findByPk(family_id);
+    const group = await db.Group.findByPk(group_id);
     // check if id is invalid 
-    if (family === null) {
+    if (group === null) {
 
         // modify res obj 
         res_obj.code = 400;
-        res_obj.message = "Not a valid family";
+        res_obj.message = "Not a valid Group";
 
         res.status(400).send(res_obj);
 
@@ -54,25 +50,25 @@ const family_details = async (req, res)=>{
         
         // modify res obj 
         res_obj.code = 200;
-        res_obj.message = family;
+        res_obj.message = group;
 
         res.status(200).send(JSON.stringify(res_obj));
     }
 }
 
 
-// Handle edit of specific person details on PUT 
-const family_edit = async (req, res)=>{
+// Handle edit of specific group details on PUT 
+const groups_edit = async (req, res)=>{
 
     // id for person info we want to edit 
-    let family_id = req.params.id;
+    let group_id = req.params.id;
 
     //new info for modification
     let new_info = req.body;
     console.log(new_info);
 
 
-    await db.Family.update(new_info,{
+    await db.Group.update(new_info,{
         where:{
             id:family_id
         }
@@ -81,36 +77,36 @@ const family_edit = async (req, res)=>{
 
     // modify request obj 
     res_obj.code = 200;
-    res_obj.message = "Family modified"
+    res_obj.message = "Group modified"
 
     res.status(200).send(JSON.stringify(res_obj));
 }
 
 
-//Handle delete of specific family details on DELETE
-const family_delete = async (req, res)=>{
+//Handle delete of specific group details on DELETE
+const groups_delete = async (req, res)=>{
     
-    // id for person info we want to edit 
-    let family_id = req.params.id;
+    // id for group info we want to edit 
+    let group_id = req.params.id;
 
-    await db.Family.destroy({
+    await db.Group.destroy({
         where: {
-            id: family_id
+            id: group_id
         }
     });
 
     // modify res_obj 
     res_obj.code = 204;
-    res_obj.message = "Success, family deleted.";
+    res_obj.message = "Success, group deleted.";
 
     res.send(JSON.stringify(res_obj));
 }
 
 
 module.exports = {
-    family_create,
-    families_list,
-    family_details,
-    family_edit,
-    family_delete
+    groups_create,
+    groups_list,
+    groups_details,
+    groups_edit,
+    groups_delete
 }
